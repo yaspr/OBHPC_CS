@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-09-20 Tue 19:49 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>OBHPC example codes</title>
+<meta name="author" content="yaspr" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">OBHPC example codes</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgeec65ed">1. Introduction</a>
+<ul>
+<li><a href="#org436a99b">1.1. Playlist while writing these codes:</a></li>
+<li><a href="#org1d683a4">1.2. <span class="underline"><b>src</b></span> directory content</a>
+<ul>
+<li><a href="#orgf16fa4e">1.2.1. Encrytion</a></li>
+<li><a href="#orgef90c1c">1.2.2. Linear algebra</a></li>
+<li><a href="#orgedd3427">1.2.3. Bitwise hacks</a></li>
+<li><a href="#orgaf0e172">1.2.4. <span class="todo TODO">TODO</span> (add codes for the following subjects)</a></li>
+</ul>
+</li>
+<li><a href="#orgb0afaea">1.3. <span class="underline"><b>doc</b></span> directory content #####</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgeec65ed" class="outline-2">
+<h2 id="orgeec65ed"><span class="section-number-2">1.</span> Introduction</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+This directory contains example C codes meant as a reference implementation for newbies.
+Happy hacking :] - Yaspr 2022 (yaspr@protonmail.com)
+</p>
+
+<p>
+<span class="underline">NOTE</span>: These codes are sometimes badly written on purpose. They are either meant to be optimized or to
+showcase inadequate algorithms, bad programming practices &amp; code patterns that break compiler optimizations.
+</p>
+</div>
+
+<div id="outline-container-org436a99b" class="outline-3">
+<h3 id="org436a99b"><span class="section-number-3">1.1.</span> Playlist while writing these codes:</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li>Tool (Lateralus, 10.000 days, Fear Inoculum, &#x2026;)</li>
+<li>Periphery (Blood Eagle, Lune, Absolomb, &#x2026;)</li>
+<li>Meshuggah (Bleed, Dancers to a discordant sytem, &#x2026;)</li>
+<li>Anup Sastry (Illuminate, This World, &#x2026;)</li>
+<li>GoGo Penguin (Quiet Fire, &#x2026;)</li>
+<li>Mammal hands</li>
+<li>Snarky Puppy (Lingus, &#x2026;)</li>
+<li>Slipknot (Vermillion, Duality, AOV, &#x2026;)</li>
+<li>Rammstein (Deutschland, Kein Lust, Feuer Frei, &#x2026;)</li>
+<li>Joe Satriani (Made of tears, Surfing with the aliens, God is crying, &#x2026;)</li>
+<li>Miles Davis (Sketches of Spain)</li>
+<li>Allen Toussaint</li>
+<li>Stevie Ray Vaughan</li>
+<li>Christian Loffler - York</li>
+<li>Bonobo - Cirrus</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org1d683a4" class="outline-3">
+<h3 id="org1d683a4"><span class="section-number-3">1.2.</span> <span class="underline"><b>src</b></span> directory content</h3>
+<div class="outline-text-3" id="text-1-2">
+</div>
+<div id="outline-container-orgf16fa4e" class="outline-4">
+<h4 id="orgf16fa4e"><span class="section-number-4">1.2.1.</span> Encrytion</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<ul class="org-ul">
+<li>File encryption using XOR and automatic key generation</li>
+<li>RSA encryption implementation</li>
+<li>Steganography using the PPM image format</li>
+<li>AES - 128 bit / 16 bytes key</li>
+<li>RSA - 64 bit integers based implementation</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgef90c1c" class="outline-4">
+<h4 id="orgef90c1c"><span class="section-number-4">1.2.2.</span> Linear algebra</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<ul class="org-ul">
+<li>Implementation of the Jacobi method for solving systems of linear equations</li>
+<li>Implementation of the Cholesky decomposition algorithm</li>
+<li>Implementation of the Conjugate-Gradient algorithm for solving systems of linear equations</li>
+
+<li>m: 5.0 - Matrix generator (diagonal, upper and lower triangular, dense, sparse? )</li>
+<li>m: 5.1 - Matrix transposition</li>
+
+<li>m: 5.2 - Naive square matrix multiplication (2D storage) with performance measurement and comparison</li>
+</ul>
+<p>
+For the 5.2 code, the test matrices archives should be extracted.
+</p>
+
+<ul class="org-ul">
+<li>m: 5.3 - Naive square matrix multiplication (1D storage) with performance measurement and comparison</li>
+
+<li>Implementation of Newton-Raphson for finding the root of a function</li>
+
+<li>Butterfly curve</li>
+<li>Integration using Trapezoidal rule</li>
+<li>Double pendulum simulation</li>
+<li>Ray casting</li>
+<li>Gray-Scott gas diffusion algorithm</li>
+<li>Ikeda map</li>
+<li>Taylor series</li>
+<li>Hamming distance of two buffers</li>
+<li>PPM editor</li>
+<li>PGM Image filtering with convolution (Sobel filter, Edge filters, Sharpening filter, Blox Blur, Gaussian Blur, Kirsch filter, Prewitt filter)</li>
+<li>Delta space exploration game</li>
+<li>Floating point summation with Kahan, Neumaeir, Pairwise, and naive algorithms</li>
+<li>An implementation of a blockchain (reward based scheme)</li>
+<li>Fourier visualization</li>
+<li>Craig Reynold's steering algorithm (UFOs)</li>
+<li>Histogram of a PGM image (plot using gnuplot)</li>
+<li>Boyer-Moore searching algorithm</li>
+<li>OpenCV camera image filtering</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgedd3427" class="outline-4">
+<h4 id="orgedd3427"><span class="section-number-4">1.2.3.</span> Bitwise hacks</h4>
+<div class="outline-text-4" id="text-1-2-3">
+<ul class="org-ul">
+<li>Bitwise POPCOUNT &amp; LEFT MOST BIT</li>
+<li>Square root implementation</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgaf0e172" class="outline-4">
+<h4 id="orgaf0e172"><span class="section-number-4">1.2.4.</span> <span class="todo TODO">TODO</span> (add codes for the following subjects)</h4>
+<div class="outline-text-4" id="text-1-2-4">
+<ul class="org-ul">
+<li>Neural network (Simple perceptron)</li>
+<li>DFT &amp; FFT</li>
+<li>Eigen value (Power iteration, Inverse iteration, QR, Arnoldi, Bisection, &#x2026;)</li>
+<li>Sound processing (sound generation, noise filtering, equalization, &#x2026;)</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb0afaea" class="outline-3">
+<h3 id="orgb0afaea"><span class="section-number-3">1.3.</span> <span class="underline"><b>doc</b></span> directory content #####</h3>
+<div class="outline-text-3" id="text-1-3">
+<ol class="org-ol">
+<li>Ariane5 explosion video. The explosion was due to a software error (bad type conversion).
+A reminder of how catastrophic code bugs can be.</li>
+
+<li>A book on computational physics</li>
+<li>References for understanding the AES &amp; Speck algorithms. Speck was designed by NSA :]</li>
+<li>References on Error Detection &amp; Correction</li>
+<li>Slides on the Eigen value problem</li>
+<li>One of the reference papers on the FFT &amp; its applications</li>
+<li>Floating point references (IEEE754 specification, &#x2026;)					  [ MUST READ ]</li>
+<li>References on Huffman encoding and decoding</li>
+<li>An interesting Reading List for developers compiled by Intel and two very useful white papers  [ MUST READ ]</li>
+<li>String searching algorithms									  [ MUST READ ]</li>
+<li>References on matrix Eigen value algorithms and cache obliviousness				  [ MUST READ ]</li>
+<li>References on Molecular Dynamics</li>
+<li>A reference on mutation detection in genetic codes</li>
+<li>A book on numerical algorithms								  [ MUST READ ]</li>
+<li>The book: Numerical Recipes in C								  [ MUST READ ]</li>
+
+<li>The amazing paper: Reflections on Trusting Trust, by Ken Thompson (the creator of UNIX and a great
+contributor to the C programming language &amp; environment - a brilliant yet humble mind).
+The paper presents a PoC (Proof of Concept) for a software virus/worm that targets compilers.
+The concept is to infect a compiler so that, every time a code is compiled and a program generated,
+the compiler injects malicious code (backdoor, &#x2026;) into the generated program. This way, the virus/worm
+won't have to deploy additional sophisticated spreading mechanisms.
+For example: what if the GCC repository is infected and it goes unnoticed. All codes compiled with GCC
+will be dragging malicious code and millions of critical computer systems will be affected.</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: yaspr</p>
+<p class="date">Created: 2022-09-20 Tue 19:49</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

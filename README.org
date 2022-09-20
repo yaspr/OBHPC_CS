@@ -1,0 +1,116 @@
+#+TITLE: OBHPC example codes
+#+AUTHOR: yaspr
+
+* Introduction
+
+This directory contains example C codes meant as a reference implementation for newbies.
+Happy hacking :] - Yaspr 2022 (yaspr@protonmail.com)
+
+_NOTE_: These codes are sometimes badly written on purpose. They are either meant to be optimized or to
+showcase inadequate algorithms, bad programming practices & code patterns that break compiler optimizations.
+      
+** Playlist while writing these codes:
+
+   - Tool (Lateralus, 10.000 days, Fear Inoculum, ...)
+   - Periphery (Blood Eagle, Lune, Absolomb, ...)
+   - Meshuggah (Bleed, Dancers to a discordant sytem, ...)
+   - Anup Sastry (Illuminate, This World, ...)
+   - GoGo Penguin (Quiet Fire, ...)
+   - Mammal hands
+   - Snarky Puppy (Lingus, ...)
+   - Slipknot (Vermillion, Duality, AOV, ...)
+   - Rammstein (Deutschland, Kein Lust, Feuer Frei, ...)
+   - Joe Satriani (Made of tears, Surfing with the aliens, God is crying, ...)
+   - Miles Davis (Sketches of Spain)
+   - Allen Toussaint 
+   - Stevie Ray Vaughan
+   - Christian Loffler - York
+   - Bonobo - Cirrus
+
+** _*src*_ directory content
+
+*** Encrytion
+
+  - File encryption using XOR and automatic key generation
+  - RSA encryption implementation 
+  - Steganography using the PPM image format 
+  - AES - 128 bit / 16 bytes key
+  - RSA - 64 bit integers based implementation
+
+*** Linear algebra
+
+  - Implementation of the Jacobi method for solving systems of linear equations 
+  - Implementation of the Cholesky decomposition algorithm 
+  - Implementation of the Conjugate-Gradient algorithm for solving systems of linear equations 
+
+  - m: 5.0 - Matrix generator (diagonal, upper and lower triangular, dense, sparse? ) 
+  - m: 5.1 - Matrix transposition
+
+  - m: 5.2 - Naive square matrix multiplication (2D storage) with performance measurement and comparison 
+  For the 5.2 code, the test matrices archives should be extracted.
+  
+  - m: 5.3 - Naive square matrix multiplication (1D storage) with performance measurement and comparison 
+
+  - Implementation of Newton-Raphson for finding the root of a function 
+
+  - Butterfly curve
+  - Integration using Trapezoidal rule
+  - Double pendulum simulation
+  - Ray casting
+  - Gray-Scott gas diffusion algorithm
+  - Ikeda map
+  - Taylor series
+  - Hamming distance of two buffers
+  - PPM editor
+  - PGM Image filtering with convolution (Sobel filter, Edge filters, Sharpening filter, Blox Blur, Gaussian Blur, Kirsch filter, Prewitt filter) 
+  - Delta space exploration game
+  - Floating point summation with Kahan, Neumaeir, Pairwise, and naive algorithms 
+  - An implementation of a blockchain (reward based scheme)
+  - Fourier visualization
+  - Craig Reynold's steering algorithm (UFOs)
+  - Histogram of a PGM image (plot using gnuplot)
+  - Boyer-Moore searching algorithm
+  - OpenCV camera image filtering
+
+*** Bitwise hacks
+
+  - Bitwise POPCOUNT & LEFT MOST BIT
+  - Square root implementation
+
+*** TODO (add codes for the following subjects) 
+
+  - Neural network (Simple perceptron)
+  - DFT & FFT
+  - Eigen value (Power iteration, Inverse iteration, QR, Arnoldi, Bisection, ...)
+  - Sound processing (sound generation, noise filtering, equalization, ...)
+
+** _*doc*_ directory content #####
+
+1. Ariane5 explosion video. The explosion was due to a software error (bad type conversion).
+   A reminder of how catastrophic code bugs can be.   
+
+2. A book on computational physics
+3. References for understanding the AES & Speck algorithms. Speck was designed by NSA :]
+4. References on Error Detection & Correction
+5. Slides on the Eigen value problem
+6. One of the reference papers on the FFT & its applications
+7. Floating point references (IEEE754 specification, ...)					  [ MUST READ ]
+8. References on Huffman encoding and decoding
+9. An interesting Reading List for developers compiled by Intel and two very useful white papers  [ MUST READ ]
+10. String searching algorithms									  [ MUST READ ]
+11. References on matrix Eigen value algorithms and cache obliviousness				  [ MUST READ ]
+12. References on Molecular Dynamics
+13. A reference on mutation detection in genetic codes
+14. A book on numerical algorithms								  [ MUST READ ]
+15. The book: Numerical Recipes in C								  [ MUST READ ]
+
+16. The amazing paper: Reflections on Trusting Trust, by Ken Thompson (the creator of UNIX and a great
+    contributor to the C programming language & environment - a brilliant yet humble mind).
+    The paper presents a PoC (Proof of Concept) for a software virus/worm that targets compilers.
+    The concept is to infect a compiler so that, every time a code is compiled and a program generated,
+    the compiler injects malicious code (backdoor, ...) into the generated program. This way, the virus/worm
+    won't have to deploy additional sophisticated spreading mechanisms.
+    For example: what if the GCC repository is infected and it goes unnoticed. All codes compiled with GCC
+    will be dragging malicious code and millions of critical computer systems will be affected.
+    
+    
