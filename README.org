@@ -84,7 +84,7 @@ showcase inadequate algorithms, bad programming practices & code patterns that b
   - Eigen value (Power iteration, Inverse iteration, QR, Arnoldi, Bisection, ...)
   - Sound processing (sound generation, noise filtering, equalization, ...)
 
-** _*doc*_ directory content #####
+** _*doc*_ directory content
 
 1. Ariane5 explosion video. The explosion was due to a software error (bad type conversion).
    A reminder of how catastrophic code bugs can be.   
