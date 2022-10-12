@@ -44,12 +44,13 @@ for (( i=0; i < $n; i++ ));
 do
     delta=$( echo "${array_f64[$i]} - ${array_f32[$i]}" | bc )
     
-    echo -e "\t${array_f64[$i]} - ${array_f32[$i]} = "$delta
+    #echo -e "\t${array_f64[$i]} - ${array_f32[$i]} = "$delta
+    printf "%.16lf - %.6f = %.16lf\n" ${array_f64[$i]} ${array_f32[$i]} $delta
     
     if [ $( echo "$delta < 0.0" | bc ) -eq 1 ]  
     then
 	delta=$( echo "$delta * -1.0" | bc )
     fi
     
-    echo $delta >> delta_f64_f32.dat
+    #echo $delta >> delta_f64_f32.dat
 done

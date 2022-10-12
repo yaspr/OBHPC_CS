@@ -1,4 +1,3 @@
-
 //
 #include <math.h>
 #include <stdio.h>
@@ -10,7 +9,7 @@
 //
 void print_f64(f64 *restrict a, u64 n)
 {
-  for (u64 i = 0; i < n * n; i++)
+  for (u64 i = 0; i < n; i++)
     printf("%lf%c", a[i], ((i + 1) % n) ? ' ' : '\n');
   
   printf("\n");
@@ -22,13 +21,13 @@ void init_f64(f64 *restrict a, u64 n, const ascii m)
   //Random value per entry
   if (m == 'r' || m == 'R')
     {
-      for (u64 i = 0; i < n * n; i++)
+      for (u64 i = 0; i < n; i++)
 	a[i] = (f64)RAND_MAX / (f64)rand();
     }
   else //Zeroing up the array
     if (m == 'z' || m == 'Z')
       {
-	for (u64 i = 0; i < n * n; i++)
+	for (u64 i = 0; i < n; i++)
 	  a[i] = 0.0;
       }
     else //Same value per entry
@@ -36,7 +35,7 @@ void init_f64(f64 *restrict a, u64 n, const ascii m)
 	{
 	  f64 c = (f64)RAND_MAX / (f64)rand();
 	  
-	  for (u64 i = 0; i < n * n; i++)
+	  for (u64 i = 0; i < n; i++)
 	    a[i] = c;
 	}
 }
