@@ -1,0 +1,30 @@
+#+TITLE: Python extensions in C (ymath library)
+
+* Introduction
+
+   This directory contains an example of how to write a Python Extention in C.
+     
+* Description
+    
+   The *ymath_lib.c* file contains the C function definitions and the *ymath_ext.c* file
+   contains the Pyhton interface.
+
+** Compilation:
+
+   #+BEGIN_SRC bash
+
+     $ cd src
+     $ python setup.py build
+     $ cp build/LIBRARY_DIR/LIB.so .
+     
+   #+END_SRC
+   
+** Running tests:
+
+   #+BEGIN_SRC bash
+
+     $ python test.py
+
+   #+END_SRC
+	
+   See *test.py* for more info on how to use the extension.
