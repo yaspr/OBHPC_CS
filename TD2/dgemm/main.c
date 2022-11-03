@@ -67,7 +67,7 @@ void run_benchmark(const ascii *title,
   u64 size = (sizeof(f64) * n * n);
   
   //
-  f64 size_b = (float) size;
+  f64 size_b = (float)size;
   f64 size_kib = size_b / (1024.0);
   f64 size_mib = size_b / (1024.0 * 1024.0);
   f64 size_gib = size_b / (1024.0 * 1024.0 * 1024.0);

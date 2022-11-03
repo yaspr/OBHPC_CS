@@ -1,4 +1,4 @@
-CFLAGS=-Wall
+CFLAGS=-g -Wall
 
 OFLAGS=-O3
 

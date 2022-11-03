@@ -45,21 +45,26 @@ void dgemm_iex(f64 *restrict a, f64 *restrict b, f64 *restrict c, u64 n)
 void dgemm_unroll(f64 *restrict a, f64 *restrict b, f64 *restrict c, u64 n)
 {
 
-  #define UNROLL4 4
+#define UNROLL4 4
   
   for (u64 i = 0; i < n; i++)
     {
       for (u64 k = 0; k < n; k++)
 	{
 	  const f64 _a_ = a[i * n + k];
-	  
-	  for (u64 j = 0; j < n; j += UNROLL4)
+
+	  //Unroll 4 times
+	  for (u64 j = 0; j < (n - (n & (UNROLL4 - 1))); j += UNROLL4)
 	    {
 	      c[i * n + j]     +=  _a_ * b[k * n + j];
 	      c[i * n + j + 1] +=  _a_ * b[k * n + j + 1];
 	      c[i * n + j + 2] +=  _a_ * b[k * n + j + 2];
 	      c[i * n + j + 3] +=  _a_ * b[k * n + j + 3];
 	    }
+
+	  //Manage the leftovers
+	  for (u64 j = (n - (n & 3)); j < n; j++)
+	    c[i * n + j]     +=  _a_ * b[k * n + j];
 	}
     }
 }
